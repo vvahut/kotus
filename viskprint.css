@@ -1,0 +1,1492 @@
+/* V I S K P R I N T . C S S
+   CSS-tyylitiedosto Ison suomen kieliopin verkkoversiota, VISK:ia varten
+   (c) Kotimaisten kielten tutkimuskeskus (Kotus) 2007
+   
+   CSS-styles for VISK (online edition of A Comprehensive Finnish Grammar)
+   (c) The Research Institute for the Languages of Finland (Kotus) 2007
+	 
+   Design: Anne Naukkarinen
+   CSS-tiedoston toteutus: Jari Vihtari 
+*/
+
+/*
+
+1 HTML JA BODY
+
+2 SIVUN YLAOSA
+2.1 Ylabanneri
+2.2 Tabit ylhaalla
+2.3 Hakukentta
+
+3 PYSTYNAVIGAATIO
+3.1 Pystynavigaation linkit
+
+4 ALAOSAN JA SISALTOOSAN RAKENNEPALIKAT
+
+5 PYKALIEN ELEMENTIT
+5.1 Perusosat
+5.2 Otsikot
+5.3 Kappaleet
+5.4 Tekstin muotoilut
+5.5 Listat
+5.6 Esimerkkiryhmat
+5.7 Asetelmat, taulukot ja kuviot
+
+6 LINKIT
+
+7 PALAUTELOMAKE
+
+8 HAKEMISTO
+
+9 POP-UPIT
+
+10 ISO SISALLYSLUETTELO
+
+11 MAARITELMAT
+
+*/
+
+
+
+/*   1   H T M L   J A   B O D Y  */
+
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	width: 600px;
+}
+/* (1) ylabannerin toistuva tausta */
+body.mainwindow {
+	/* -
+	background-image: url('kuvat/ylabanneri_tausta.gif');
+	background-repeat: repeat-x;
+	*/
+}
+/* (1) popup-ikkunoissa ei ylataustaa */
+body.popup {
+	/* -
+	background-image: url('kuvat/popup_puntausta.gif');
+	background-repeat: repeat-x;
+	*/
+}
+
+
+
+/*  2   S I V U N   Y L A O S A  */
+
+
+div#ylaosa {
+	display: none;
+}
+
+
+/* 2.1 Ylabanneri */
+
+div#ylabanneri_vasen {
+	display: none;
+}
+div#ylabanneri_oikea {
+	display: none;
+}
+
+div#ylabanneri_oikea_ylaosa {
+	display: none;
+}
+
+div#hakukentta {
+	display: none;
+}
+
+div#navipalkki {
+	display: none;
+}
+
+div#navivasen {
+	display: none;
+}
+
+div#vaakanavigaatio {
+	display: none;
+}
+
+
+/* 2.2 Tabit ylhaalla */
+
+div.tabimusta {
+	display: none;
+}
+div.tabivalkea {
+	display: none;
+}
+div.tabi {
+	display: none;
+}
+
+
+/* 2.3 Hakukentta */
+
+#hakuform {
+	display: none;
+	/*
+	float: right;
+	*/
+}
+
+#hakukentta_table tr td {
+	padding-left: 5px;
+	vertical-align: baseline;
+	font-size:10px;
+	font-family:Verdana,sans-serif;
+	color: #ffffff;
+}
+.white {
+	background-color: #ffffff;
+	color: #000000;
+}
+.black {
+	background-color: #000000;
+	color: #ffffff;
+}
+.none {
+	color: #ffffff;
+}
+
+input.hakukentta {
+	padding-left: 2px;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	/*border: 1px solid #999999;*/
+	border-style: none;
+}
+
+select.hakukentta {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	border-style: none;
+}
+
+input.button_musta {
+	font-size:10px;
+	font-family:Verdana,sans-serif;
+	color: #ffffff;
+	background-color: #000000;
+	border-style: none;
+	padding: 2px 4px 2px 4px;
+	margin: 0;
+}
+
+
+
+/*  3   P Y S T Y N A V I G A A T I O  */
+
+
+div#pystynavigaatio {
+	display: none;
+	width: 0px;
+	height: 0px;
+}
+
+div.aakkoslista {
+	display: none;
+}
+
+p.aakkoslista {
+	display: none; 
+}
+
+p.pystynavi {
+	display: none;
+}
+
+div#pystynavigaatio p {
+	display: none;
+}
+
+span.aakkosvalikko {
+	display: none;
+}
+
+p.toc_suljetasot {
+	display: none;
+}
+
+p.toc_1taso {
+	display: none;
+}
+p.toc_2taso {
+	display: none;
+}
+p.toc_3taso {
+	display: none;
+}
+p.toc_4taso {
+	display: none;
+}
+p.toc_5taso {
+	display: none;
+}
+p.toc_6taso {
+	display: none;
+}
+
+div.toc_1taso_cont, div.toc_2taso_cont, div.toc_3taso_cont, div.toc_4taso_cont, div.toc_5taso_cont, div.toc_6taso_cont {
+	display: none;
+}
+div.toc_1taso_cont_hide, div.toc_2taso_cont_hide, div.toc_3taso_cont_hide, div.toc_4taso_cont_hide, div.toc_5taso_cont_hide, div.toc_6taso_cont_hide {
+	display: none;
+}
+
+p.toc_7taso {
+	display: none;
+}
+p.toc_7taso_auki {
+	display: none;
+}
+
+/* 3.1 Pystynavigaation linkit*/
+
+.toc_suljetasot a:link, .toc_suljetasot a:visited {
+	display: none;
+}
+
+.toc_suljetasot a:hover, .toc_suljetasot a:active {
+	display: none;
+}
+
+.toc_1taso a:link, .toc_1taso a:visited {
+	display: none;
+}
+
+.toc_1taso a:hover, .toc_1taso a:active {
+	display: none;
+}
+
+.toc_2taso a:link, .toc_2taso a:visited, .toc_3taso a:link, .toc_3taso a:visited {
+	display: none;
+}
+
+.toc_2taso a:hover, .toc_2taso a:active, .toc_3taso a:hover, .toc_3taso a:active {
+	display: none;
+}
+
+.toc_4taso a:link, .toc_4taso a:visited, .toc_5taso a:link, .toc_5taso a:visited, .toc_6taso a:link, .toc_6taso a:visited {
+	display: none;
+}
+
+.toc_4taso a:hover, .toc_4taso a:active, .toc_5taso a:hover, .toc_5taso a:active, .toc_6taso a:hover, .toc_6taso a:active  {
+	display: none;
+}
+
+.toc_7taso a:link, .toc_7taso a:visited {
+	display: none;
+}
+
+.toc_7taso a:hover, .toc_7taso a:active {
+	display: none;
+}
+
+.toc_7taso_auki a:link, .toc_7taso_auki a:visited {
+	display: none;
+}
+
+.toc_7taso_auki a:hover, .toc_7taso_auki a:active {
+	display: none;
+}
+
+.aakkoslista > a:link, .aakkoslista > a:visited {
+	display: none;
+}
+
+.aakkoslista > a:hover, .aakkoslista > a:active {
+	display: none;
+}
+
+
+/*   4   A L A O S A N   J A   S I S A L T O O S A N    R A K E N N E P A L I K A T   */
+
+
+div#alaosa {
+	width: 585px;
+	/*
+	width: 910px;
+	background-image: url('kuvat/pystynavigaatio_tausta.gif');
+	background-repeat: repeat-y;
+	*/
+	height: 100%;
+	height: auto !important;
+	min-height: 100%;
+	padding-bottom: 30px;
+}
+
+div#floor {
+	/*
+	width: 910px;
+	background-image: url('kuvat/pystynavigaatio_tausta.gif');
+	background-repeat: repeat-y;
+	*/
+	display: none;	
+}
+
+/* (4) sisaltokentta */
+div#sisaltokentta {
+	clear: both;
+	float: none;
+	width: 585px;
+	margin: 0;
+	padding: 0 0 0 0;	
+}
+
+img#logo {
+	margin-top: 42px;
+	margin-left: 55px;
+	border-style: none;
+}
+
+img#koristekirjainjono {
+	margin-top: 42px;
+	margin-left: 0px;
+}
+
+img#vaakanavigaatio_kuva {
+	border-style: none;
+}
+
+/* (4) ed-seur-linkit */
+div.ed_seur_linkit {
+	display: none;
+	/*
+	width: 585px;
+	margin: 0;
+	padding-top: 6px;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+	border-bottom: 1px solid #ddd;
+	*/
+}
+
+div.ed_linkki {
+	width: 250px;
+	margin: 0;
+	float: left;
+}
+
+div.seur_linkki {
+	width: 250px;
+	margin: 0;
+	float: right;
+	text-align: right;
+}
+
+div.ed_seur_linkit div.spacer { 
+	clear: both;
+	height: 7px;
+}
+
+div.vaakanavigaatio_footer {
+	display: none;
+	width: 585px;
+	margin: 0;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #ddd;
+}
+div.pykala_footer {
+	width: 585px;
+	margin: 0;
+	padding: 4px 0 0 0;
+	float: right;
+}
+
+/* (4) footerin harmaa teksti*/
+p.pykala_footer {
+	padding: 0 0 0 0;
+	margin: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	color: #333;
+}
+
+/* (4) ala kaytakaan tata! */
+hr.harmaaviiva {
+	color: #dddddd;
+	width: 100%;
+	height: 1px;
+	border-style: solid;
+}
+
+
+
+/*  5   P Y K A L A N    E L E M E N T I T   */
+
+
+/* 5.1 Perusosat */
+
+div.pykala, div.eipykala {
+	width: 585px;
+	margin: 0;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #ddd;
+}
+
+div.murupolku {
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 27px 0;
+	/*
+	width: 585px;
+	*/
+}
+
+div.huom {
+
+}
+
+span.huomnumero {
+	font-weight: bold;
+}
+
+div.asetelma, div.taulukko {
+	width: 555px;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+	padding: 0 0 18px 30px;
+}
+
+div.asetelma_iso {
+	width: 585px;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+	padding: 0 0 18px 0;
+}
+
+
+/* (5.1) paallekkaiset asetelmat, ks. pykala 1051 */
+div.asetelma_kerros {
+	width: 555px;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+	padding: 0 0 18px 30px;
+}
+
+
+
+/* 5.2 Otsikot */
+
+/* (5.2) pykalaotsikko ja muuotsikko*/
+h2.pykotsikko, h2.muuotsikko {
+	font-family: georgia, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 24px;
+	margin: 0;
+	padding: 0 0 27px 0;
+}
+
+h2.pupupykotsikko {
+	font-family: georgia, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 24px;
+	margin: 0;
+	padding: 0 0 0 0;
+}
+
+h3.muuotsikko {
+	font-family: verdana, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 24px;
+	margin: 0;
+	padding: 26px 0 13px 0;
+}
+
+
+/* (5.2) alaotsikko */
+h3 {
+	font-family: verdana, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 18px;
+	margin: 0;
+	padding: 9px 0 18px 0;
+}
+
+/* (5.2) pienempi alaotsikko */
+h4 {
+	font-family: verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	margin: 0;
+	padding: 0;
+}
+
+/* (5.2) asetelman otsikko */
+h6.asetelma {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 14px;
+	margin: 0;
+	padding: 9px 0 18px 0;
+}
+
+/*asetelman otsikko pop-upissa*/
+h6.popup {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 14px;
+	margin: 0 0 18px 0;
+}
+
+.otsikko_tekstisolu {
+	font-weight: normal;
+	font-variant: small-caps;
+}
+
+
+/* 5.3 Kappaleet */
+
+p.kappale {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+	padding: 0 0 18px 0;
+	margin: 0;
+	/*text-indent: 16px;*/
+}
+
+p.kappale_noindent {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+	padding: 0 0 18px 0;
+	margin: 0;
+}
+
+p.pupupykalainfo {
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	letter-spacing: +5px;
+	padding: 0 0 27px 0;
+	color: #c3240f;
+}
+
+
+h2.pykotsikko + p.kappale {
+	text-indent: 0px;
+}
+
+/* (5.3) huomin leipateksti */
+p.huom {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 0 0 9px 0;
+	margin: 0;
+}
+
+.huom p.kappale, .huom p.kappale_noindent {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 16px;
+	padding: 0 0 9px 0;
+	margin: 0;
+}
+
+p.huomkappale {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 0 0 9px 0;
+	margin: 0;
+}
+
+/* 5.4 Tekstin muotoilut */
+
+em.kielenaines {
+	/* oletus: font-style: italic; */
+}
+
+span.meta {
+	font-variant: small-caps;
+}
+
+.kasite {
+	margin: 0;
+	padding: 0;
+	font-variant: small-caps;
+}
+
+span.normaali {
+	font-variant: normal;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.lahde, .esimkomm {
+	font-style: normal;
+}
+
+/* 5.5 Listat */
+
+/* (5.5) pykalan ja luvun kirjallisuus */
+
+ul {
+	margin: 0;
+	padding: 0 0 18px 0;
+	width: 585px;
+	font-size: 12px;
+}
+
+.pykala ul {
+	padding: 18px 0 18px 0;
+}
+
+/* (5.5.) pykalan pykalan- ja luvunlahdelinkit */
+.pykala >	ul {
+	list-style: none;
+}
+
+li { 
+	margin: 0;
+	padding: 0;
+}
+
+
+dl {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+	padding: 0 0 18px 0;
+	margin: 0;
+}
+
+dt.nimeke {
+	font-variant: normal;
+}
+
+dt {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	font-variant: small-caps;
+}
+
+
+dd {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0 0 9px 32px;
+}
+
+/* (5.5) lista */
+
+ul.lista {
+	margin: 0;
+	padding: 0 0 10px 32px;
+	list-style: disc;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+ol.lista {
+	margin: 0;
+	padding: 0 0 10px 32px;
+	list-style: decimal;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.huom ul.lista, .huom ol.lista {
+	font-size: 11px;
+	line-height: 16px;
+	padding: 0 0 9px 32px;
+}
+
+.lista li {
+	padding-bottom: 8px;
+}
+
+/* 5.6 Esimerkkiryhmat */
+
+div.esimerkkiryhma {
+	margin: 0;
+	padding: 0 0 18px 0;
+	width: 585px;
+	float: none;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 16px;
+	/*overflow: auto;*/
+}
+
+.huom div.esimerkkiryhma {
+	padding: 0 0 9px 0;
+}
+
+.tekstisolu div.esimerkkiryhma {
+	width: 571px;
+}
+
+.tekstisolu > h4, .tekstisolu > p, .tekstisolu > div {
+	padding-left: 4px;
+}
+
+div.esim_marginaali {
+	float: left;
+	width: 32px;
+	height: 100%;
+	padding-left: 16px;
+}
+
+.tekstisolu div.esim_marginaali {
+	width: 14px;
+	padding-left: 0;
+}
+
+div.puhe-esim_marginaali {
+	float: left;
+	width: 32px;
+	height: 100%;
+	padding-top: 2px;
+	padding-left: 16px;
+}
+
+div.esim_sisalto {
+	float: left;
+	width: 535px;
+	height: 100%;
+}
+
+span.esimerkki {
+	
+}
+
+.otsikko_esim {
+	font-variant: small-caps;
+}
+
+.otsikko_esimryhma {
+	font-variant: small-caps;
+}
+
+span.apu {
+	font-variant: small-caps;
+}
+
+
+/* 5.7 Asetelmat, taulukot ja kuviot */
+
+/* (5.7) kuvateksti, esim. asetelman alla */
+p.caption {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 5px 0 18px 0;
+	margin: 0;
+}
+
+/* (5.7) taulukkokommentti */
+p.taulukkokommentti {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 32px 0 18px 0;
+	margin: 0;
+}
+
+table.taulukkokommentti td.solu {
+	padding: 4px 0px 8px 0px;
+}
+
+/* (5.7) kuviokommentti */
+p.kuviokommentti {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 0 0 18px 0;
+	margin: 0;
+}
+
+/* (5.7) palstoitus */
+table.palstoitus {
+}
+
+.palstoitus td {
+	text-align: left;
+	vertical-align: top;
+	padding-right: 10px;
+}
+
+/* (5.7) taulukko ilman taustavaria ja reunoja,
+esim. puhe-esimerkit */
+
+table.esimerkki {
+	margin: 0;
+}
+
+table.puhe-esimerkki {
+	margin: 0;
+}
+
+td.kohta {
+	text-align: left;
+	vertical-align: top;
+	padding-right: 5px;
+}
+
+td.nro {
+	text-align: left;
+	vertical-align: top;
+	padding-right: 10px;
+}
+
+td.puhuja {
+	text-align: left;
+	vertical-align: top;
+	padding-right: 5px;
+}
+
+td.aines {
+	text-align: left;
+	vertical-align: top;
+}
+
+td.lause {
+	text-align: left;
+	vertical-align: top;
+}
+
+
+
+/* (5.7) taulukko taustavarilla ja reunoilla */
+
+table.taulukko {
+	margin: 0;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+tr.titlecenter {
+	background-color: #fff;
+	text-align: center;
+	vertical-align: top;
+}
+
+td.titleleft {
+	background-color: #fff;
+	text-align: left;
+	vertical-align: top;
+	border: 1px solid #b1b1b1;
+}
+
+tr.contentcenter {
+	background-color: #eaeaea;
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid #b1b1b1;
+}
+
+tr.contentleft {
+	background-color: #eaeaea;
+	text-align: left;
+	vertical-align: top;
+	border: 1px solid #b1b1b1;
+}
+
+td.titlecenter {
+	background-color: #fff;
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid #b1b1b1;
+}
+
+
+td.border {
+	border: 1px solid #b1b1b1;
+	vertical-align: top;
+}
+
+/* (5.7) lyhennelistan taulukot */
+
+table.lyhennelista {
+	margin: 0;
+	border-collapse: collapse;
+	width: 100%;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+}
+.column_first {
+	width: 15%;
+}
+.column_last {
+}
+
+.asetelma td, .taulukko td {
+	padding-right: 4px;
+	padding-left: 4px;
+}
+td.tausta {
+	background-color: #eaeaea;
+}
+/* tummempi taustavari */
+td.tausta2 {
+	background-color: #cdcdcd;
+}
+td.tausta_oikea {
+	background-color: #eaeaea;
+	background-image: url(kuvat/taulukkosolu_oikea.gif);
+	background-repeat: repeat-y;
+	background-position: top right;
+}
+td.tausta_vasen {
+	background-color: #eaeaea;
+	background-image: url(kuvat/taulukkosolu_vasen.gif);
+	background-repeat: repeat-y;
+	background-position: top left;
+}
+td.tausta2_oikea {
+	background-color: #cdcdcd;
+	background-image: url(kuvat/taulukkosolu2_oikea.gif);
+	background-repeat: repeat-y;
+	background-position: top right;
+}
+td.tausta2_vasen {
+	background-color: #cdcdcd;
+	background-image: url(kuvat/taulukkosolu2_vasen.gif);
+	background-repeat: repeat-y;
+	background-position: top left;
+}
+
+/* (5.7) kuviot */
+.kuvio {
+	text-align: center;
+}
+.kuvio h6 {
+	text-align: left;
+}
+.kuvio p {
+	text-align: left;
+}
+.kuvio img {
+	padding: 0 0 32px 0;
+}
+
+
+
+
+/*  6   L I N K I T   */
+
+/* (6) himmennetty linkki */
+span.nolink {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	/*font-size: 12px;*/
+	font-weight: bold;
+	line-height: 18px;
+	text-decoration: none;
+	color: #dd9999;	
+}
+
+/* (6) tekstikentan peruslinkki */
+a:link, a:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	/*font-size: 12px;*/
+	font-weight: bold;
+	line-height: 18px;
+	text-decoration: none;
+	color: #c3240f;
+}
+a:hover, a:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	/*font-size: 12px;*/
+	font-weight: bold;
+	line-height: 18px;
+	text-decoration: underline;
+	color: #c3240f;
+}
+
+
+/* (6) kuvatekstissa esiintyva linkki */
+a.caption:link, a.caption:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 16px;
+	text-decoration: none;
+	color: #c3240f;
+}
+a.caption:hover, a.caption:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 16px;
+	text-decoration: underline;
+	color: #c3240f;
+}
+
+
+/* (6) kuuntele-ikonin linkki */
+a.icon:link, a.icon:visited {
+	margin: 0;
+	padding: 0 0 0 30px;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	text-decoration: none;
+	background-image: url(../kuvat/kuunteleikoni.gif);
+	background-position: left;
+	background-repeat: no-repeat;
+	display: block;
+	color: #c3240f;
+}
+a.icon:hover, a.icon:active {
+	margin: 0;
+	padding: 0 0 0 30px;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	text-decoration: underline;
+	background-image: url(../kuvat/kuunteleikoni.gif);
+	background-position: left;
+	background-repeat: no-repeat;
+	display: block;
+	color: #c3240f;
+}
+
+/* (6) valkoinen linkki bannerissa ym.*/
+a.banneri:link, a.banneri:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 18px;
+	text-decoration: none;
+	color: #ffffff;
+}
+a.banneri:hover, a.banneri:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 18px;
+	text-decoration: underline;
+	color: #ffffff;
+}
+
+/* (6) musta linkki bannerissa ym.*/
+a.banneri_musta:link, a.banneri_musta:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 18px;
+	text-decoration: none;
+	color: #000000;
+}
+a.banneri_musta:hover, a.banneri_musta:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 18px;
+	text-decoration: underline;
+	color: #000000;
+}
+
+/* (6) edellinen-seuraavalinkki */
+a.edseur:link, a.edseur:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: none;
+	line-height: 18px;
+	color: #c3240f;
+}
+a.edseur:hover, a.edseur:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: underline;
+	line-height: 18px;
+	color: #c3240f;
+}
+span.edseurnolink {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: none;
+	line-height: 18px;
+	color: #dd9999;
+}
+
+
+/*   7   P A L A U T E L O M A K E   */
+
+
+.lomake { 
+margin: 0; 
+padding: 9px 0 36px 0; 
+width: 360px; 
+text-align: left;
+}
+
+p.lomake {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 18px 0 18px 0;
+	margin: 0;
+}
+
+.row { 
+clear: both; 
+margin: 0; 
+padding: 3px 0 0 0; 
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #000;
+}
+
+.label { 
+margin: 0; 
+padding: 3px 0 0 0; 
+float: left; 
+text-align: left; 
+width: 80px;
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #000;
+}
+
+.formarea { 
+margin: 0; 
+padding: 0; 
+float: right; 
+text-align: left; 
+width: 250px;
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #000;
+}
+
+textarea { 
+width: 360px; 
+margin: 3px 0 10px 0; 
+padding: 0; 
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #000;
+}
+
+.singleline { 
+width: 250px;
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #000; 
+margin: 0; 
+padding: 3px 0 3px 0;
+}
+
+.spacer { 
+	clear: both;
+	font-size: 1px;
+	line-height: 1px;
+}
+
+input.btn { 
+margin: 0; 
+padding: 4px; 
+font-family: verdana, sans-serif; 
+font-size: 12px; 
+color: #fff;
+background-color: #c3240f;
+border: none;
+}
+
+
+
+/*   8   H A K E M I S T O   */
+
+
+p.hakusana {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #c3240f;
+	padding: 0px;
+	margin: 0px;
+}
+
+span.hakusana {
+	color: #c3240f;
+}
+
+p.hakusanaselite {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	padding: 0px;
+	margin: 0px;
+}
+
+p.alakohta {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	padding: 0 0 0 32px;
+	margin: 0px;
+}
+
+/* (8) Hakutulosten kontekstin kappale */
+p.hakukonteksti {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	padding: 8px 0px 16px 0px;
+	margin: 0px;
+}
+
+.hakusana a:link, .hakusana a:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #c3240f;
+}
+.hakusana a:hover, .hakusana a:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #c3240f;
+}
+
+.alakohta a:link, .alakohta a:visited, .hakusanaselite a:link, .hakusanaselite a:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000000;
+}
+.alakohta a:hover, .alakohta a:active, .hakusanaselite a:hover, .hakusanaselite a:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: underline;
+	color: #000000;
+}
+
+
+
+/*   9   P O P - U P I T   */
+
+
+/* (9) pop-upeissa esiintyvat divit */
+div.asetelma_undefinedwidth {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+div.popuplogobar {
+	margin: 0;
+	height: 82px;
+	background-image: url('kuvat/popup_isologo.jpg');
+	background-repeat: no-repeat;
+}
+
+div.popupmain {
+	margin: 0;
+	padding: 27px 30px 18px 30px;
+}
+
+div.popupfooter {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #ddd;
+	clear: both;
+}
+
+div.sulje {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	margin: 20px 0 0 0;
+	padding: 0 0 30px 0;
+	text-align: right;
+	float: right; 
+}
+
+/* (9) pop-upin footerin harmaa teksti */
+p.popupfooter {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 16px;
+	padding: 5px 0 18px 0;
+	margin: 0;
+	color: #333;
+}
+
+.color_red {
+	color: #c3240f;
+}
+
+
+/*  10   I S O   S I S A L L Y S L U E T T E L O  */
+
+
+div#sisallysluettelo {
+	padding-bottom: 18px;
+}
+
+.isotoc_1taso {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: +5px;
+	color: #555555;
+	padding-top: 28px;
+}
+
+.isotoc_2taso {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 1em;
+}
+
+.isotoc_3taso, .isotoc_4taso, .isotoc_5taso, .isotoc_6taso {
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+}
+
+.isotoc_3taso {
+	padding-left: 20px;
+}
+.isotoc_4taso, .isotoc_pykala_3 {
+	padding-left: 35px;
+}
+.isotoc_5taso, .isotoc_pykala_4 {
+	padding-left: 50px;
+}
+.isotoc_6taso, .isotoc_pykala_5 {
+	padding-left: 65px;
+}
+.isotoc_pykala_6 {
+	padding-left: 80px;
+}
+
+
+/* (10) linkit*/
+a.isotoc_linkki:link, a.isotoc_linkki:visited {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #c3240f;
+}
+
+a.isotoc_linkki:hover, a.isotoc_linkki:active {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: underline;
+	color: #c3240f;
+}
+
+
+
+
+/*  11   M A A R I T E L M A T  */
+
+
+span.colored {
+	background-color: yellow;
+}
+
+.isk_palkkiteksti p {
+	padding: 8px 10px 8px 20px;
+	line-height: 18px;
+}
+
+ol.termihakutulos {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+}
