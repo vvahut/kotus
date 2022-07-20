@@ -64,5 +64,5 @@ for i in kuvio_003.png kuvio_004.png kuvio_005.png kuvio_006.png \
 do wget $base/$i -O kuviot/$i; done
 
 #pdf-tiedoston luominen
-wkhtmltopdf koko.html iso_suomen_kielioppi.pdf;
+wkthmltopdf --enable-internal-links koko.html --enable-local-file-access koko.html iso_suomen_kielioppi.pdf;
 
