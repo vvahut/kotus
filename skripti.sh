@@ -42,7 +42,7 @@ python3 kotus.py header >> koko.html
 
 for i in {1..1738}; do
   cat html/$i-raw.html >> koko.html;
-  echo '<hr>' >> koko.html;
+  #echo '<hr>' >> koko.html;
 done;
 echo '</html>' >> koko.html;
 
@@ -66,4 +66,3 @@ do wget $base/$i -O kuviot/$i; done
 
 #Create pdf
 wkhtmltopdf --enable-internal-links --enable-local-file-access koko.html iso_suomen_kielioppi.pdf;
-
