@@ -53,7 +53,7 @@ with open('sivu.html') as f:
        poisto.decompose()
      except: pass
 
-   #ul tag doesn't have proper id, so it's retrieved by randomish means
+   #ul tag doesn't have a proper id, so it's retrieved by randomish means
    pattern = re.compile('.*Pykälän kirjallisuus.*')
    all_ul = div.find_all('ul')
 

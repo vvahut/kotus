@@ -31,7 +31,7 @@ for i in {1..1738}; do
   #python3 kotus.py > output.html;
   python3 kotus.py raw > output_raw.html;
   #wkhtmltopdf output.html pdf/$i.pdf; #If you want individual pages
-  cp sivu.html html/original/$i.html;
+  #cp sivu.html html/original/$i.html;
   cp output_raw.html html/$i-raw.html;
 done;
 

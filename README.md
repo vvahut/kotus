@@ -2,7 +2,7 @@
 
 ## What?
 
-Kotus is a cumbersome script for compiling the online version of [Iso Suomen kielioppikirja](https://kaino.kotus.fi/visk/etusivu.php) to pdf.
+Kotus is a cumbersome script for compiling the online version of [Iso suomen kielioppikirja](https://kaino.kotus.fi/visk/etusivu.php) to pdf.
 
 ## Installation
 
