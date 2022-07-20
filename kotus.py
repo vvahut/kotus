@@ -64,6 +64,19 @@ with open('sivu.html') as f:
      if all_a or all_no_link:
        ul.decompose()
 
+   #create link targets (e.g. name=linkki243)
+   all_otsikko = div.find_all(attrs={'class': 'pykotsikko'})
+   for otsikko in all_otsikko:
+     num = re.findall("\d+", otsikko.text.strip())
+     otsikko['name'] = 'linkki' + str(num[0])
+
+   #create internal link (e.g. #linkki243)
+   pattern = re.compile('sisallys\.php\?p.*')
+   all_links = div.find_all('a', attrs={'href': pattern})
+   for link in all_links:
+     num = re.findall('\d+', str(link))
+     link['href'] = '#linkki' + str(num[0])
+
    if args and args[0] == "raw":
      html = str(div)
    else: html = html_open + str(head) + str(div) + html_close
