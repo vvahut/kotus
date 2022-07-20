@@ -38,7 +38,9 @@ done;
 #Merge html files
 python3 kotus.py doctype > koko.html;
 echo '<html>' >> koko.html
-python3 kotus.py header >> koko.html
+python3 kotus.py header >> koko.html;
+
+cat sisallys.html >> koko.html;
 
 for i in {1..1738}; do
   cat html/$i-raw.html >> koko.html;
