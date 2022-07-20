@@ -1,40 +1,41 @@
 #!/bin/bash
 
-#########ISO SUOMEN KIELIOPPI -SKRIPTI#######
-#https://scripta.kotus.fi/visk/etusivu.php
+#########ISO SUOMEN KIELIOPPI SCRIPT#########
+#https://kaino.kotus.fi/visk/etusivu.php
 
-#########ASENNUSOHJE#########################
-#Vaatii Python 3:n ja pari muuta kirjastoa
+#########INSTALLATION########################
+#Requires Python 3 and a few other libraries
 
-#beautiful soup -kirjasto
+#Beautiful soup library
 #sudo apt-get install python3-bs4
 
-#wkhtmltopdf -kirjasto, joka kääntää html:n pdf-tiedostoksi
-#sudo apt-get install wkhtmltopdf
+#Wkhtmltopdf translates html to pdf
+#Download binary from: https://wkhtmltopdf.org/downloads.html
 
-#suoritusoikeus skriptille
+#Execute priviledges
 #sudo chmod +x skripti.sh
 
-#skriptin ajaminen
+#Run script
 #./skripti.sh
 
-#########SKRIPTI#############################
+#########SCRIPT##############################
 
-#kansiot
+#Folders
 if [ ! -d "kuviot" ]; then mkdir kuviot; fi
 if [ ! -d "html" ]; then mkdir html; fi
 if [ ! -d "pdf" ]; then mkdir pdf; fi
 
-#html-tiedostojen lataaminen
+#Load html files
 for i in {1..1738}; do
-  wget https://scripta.kotus.fi/visk/sisallys.php?p=$i -O sivu.html;
+  wget https://kaino.kotus.fi/visk/sisallys.php?p=$i -O sivu.html;
   #python3 kotus.py > output.html;
   python3 kotus.py raw > output_raw.html;
-  #wkhtmltopdf output.html pdf/$i.pdf; #Jos haluat yksittäiset sivut
+  #wkhtmltopdf output.html pdf/$i.pdf; #If you want individual pages
+  cp sivu.html html/original/$i.html;
   cp output_raw.html html/$i-raw.html;
 done;
 
-# html-tiedstojen yhteen liittäminen
+#Merge html files
 python3 kotus.py doctype > koko.html;
 echo '<html>' >> koko.html
 python3 kotus.py header >> koko.html
@@ -45,13 +46,13 @@ for i in {1..1738}; do
 done;
 echo '</html>' >> koko.html;
 
-#css- ja js-tiedostojen lataaminen
-wget https://scripta.kotus.fi/visk/data/viskrutiinit.js -O viskrutiinit.js;
-wget https://scripta.kotus.fi/visk/css/visk.css -O visk.css;
-wget https://scripta.kotus.fi/visk/css/viskprint.css -O viskprint.css;
+#Load css and js files
+wget https://kaino.kotus.fi/visk/data/viskrutiinit.js -O viskrutiinit.js;
+wget https://kaino.kotus.fi/visk/css/visk.css -O visk.css;
+wget https://kaino.kotus.fi/visk/css/viskprint.css -O viskprint.css;
 
-#kuvien lataaminen
-base="https://scripta.kotus.fi/visk/kuviot";
+#Load pictures
+base="https://kaino.kotus.fi/visk/kuviot";
 for i in kuvio_003.png kuvio_004.png kuvio_005.png kuvio_006.png \
    kuvio_007.png kuvio_p443.png kuvio_008.png kuvio_009.png \
    kuvio_p961.png kuvio_p1005.png vaakanuolet.png kuvio_011.png \
@@ -63,6 +64,6 @@ for i in kuvio_003.png kuvio_004.png kuvio_005.png kuvio_006.png \
    kuvio_p1547.png kuvio_p1548.png vaakaviiva.png kuvio_016.png;
 do wget $base/$i -O kuviot/$i; done
 
-#pdf-tiedoston luominen
-wkthmltopdf --enable-internal-links koko.html --enable-local-file-access koko.html iso_suomen_kielioppi.pdf;
+#Create pdf
+wkhtmltopdf --enable-internal-links --enable-local-file-access koko.html iso_suomen_kielioppi.pdf;
 
