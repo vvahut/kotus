@@ -4,12 +4,12 @@
 from bs4 import BeautifulSoup
 import sys, re
 
-#dokumenttityyppi; puuttuminen sotkee tyylit
+#document type; if missing, the styles won't work
 doctype = BeautifulSoup("""
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">""", 'html.parser')
 
-#headeri html-tiedstoon; kunhan on utf-8 & css & js, niin ok
+#add html header; should be ok if utf-8, css & js is included
 head = BeautifulSoup("""
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -34,10 +34,10 @@ if args and args[0] == "doctype": print(doctype); quit()
 
 with open('sivu.html') as f:
    sivu = f.read()
-   soppa = BeautifulSoup(sivu)
+   soppa = BeautifulSoup(sivu, features="lxml")
    div = soppa.find("div", {"id": "sisaltokentta"})
 
-   #käytännössä sivuston rakenteeseen nojaavia poistoja
+   #deletions concerning page structure
    poisto1 = div.find_all('div', {'class':'ed_seur_linkit'})
    for poisto in poisto1: poisto.decompose()
 
@@ -53,7 +53,7 @@ with open('sivu.html') as f:
        poisto.decompose()
      except: pass
 
-   #ul-tagissa ei ole kunnon id:tä, niin pitää hakea mutkan kautta
+   #ul tag doesn't have proper id, so it's retrieved by randomish means
    pattern = re.compile('.*Pykälän kirjallisuus.*')
    all_ul = div.find_all('ul')
 
@@ -68,5 +68,5 @@ with open('sivu.html') as f:
      html = str(div)
    else: html = html_open + str(head) + str(div) + html_close
 
-   #stdoutiin; sama olisi tallentaa tietty
+   #to stdout; might as well save it
    print(html)
