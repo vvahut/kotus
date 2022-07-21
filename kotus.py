@@ -106,7 +106,7 @@ def html_page(raw):
 
     if raw:
       html = str(div)
-    else: html = html_open + str(head) + str(div) + html_close
+    else: html = html_open() + str(head) + str(div) + html_close()
 
     return html
 
