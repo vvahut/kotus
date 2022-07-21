@@ -70,7 +70,7 @@ def html_head():
 def html_close(): return '</html>'
 def html_open(): return '<html>'
 
-def html_page(raw):
+def html_page():
   with open('sivu.html') as f:
     sivu = f.read()
     soppa = BeautifulSoup(sivu, features="lxml")
@@ -79,10 +79,7 @@ def html_page(raw):
     delete_unnecessary_tags(div)
     fix_links(div)
 
-    if raw: html = str(div)
-    else:   html = html_open() + str(head) + str(div) + html_close()
-
-    return html
+    return str(div)
 
 def main():
   args = sys.argv[1:]
@@ -91,8 +88,8 @@ def main():
     if   args[0] == "header":  output = html_head()
     elif args[0] == "doctype": output = html_doctype()
     elif args[0] == "table":   output = html_table_of_contents()
-    elif args[0] == "raw":     output = html_page(raw=True)
-    else: output = html_page(raw=False)
+    elif args[0] == "raw":     output = html_page()
+    else: output = html_open() + html_head() + html_page() + html_close()
 
     #to stdout for the main script to handle
     print(output)
