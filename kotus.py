@@ -4,28 +4,40 @@
 from bs4 import BeautifulSoup
 import sys, re
 
-def html_table_of_contents():
-  with open('sisallys.html') as f:
-    sivu = f.read()
-    soppa = BeautifulSoup(sivu, features="lxml")
-    div = soppa.find("div", {"id": "sisaltokentta"})
-
-    #deletions concerning page structure
-    poisto1 = div.find_all('div', {'class':'ed_seur_linkit'})
+#deletions concerning page structure
+def delete_unnecessary_tags(target):
+    poisto1 = target.find_all('div', {'class':'ed_seur_linkit'})
     for poisto in poisto1: poisto.decompose()
+    for element in 'ed_linkki', 'seur_linkki', 'murupolku', 'ed_seur_linkit', \
+                   'vaakanavigaatio_footer', 'pykala_footer':
+      poisto = target.find('div', {'class': element})
+      try:
+        poisto.decompose()
+      except: pass
 
+#correct page links
+def fix_links(target):
     #create link targets (e.g. name=linkki243)
-    all_otsikko = div.find_all(attrs={'class': 'pykotsikko'})
+    all_otsikko = target.find_all(attrs={'class': 'pykotsikko'})
     for otsikko in all_otsikko:
       num = re.findall("\d+", otsikko.text.strip())
       otsikko['name'] = 'linkki' + str(num[0])
 
     #create internal link (e.g. #linkki243)
     pattern = re.compile('sisallys\.php\?p.*')
-    all_links = div.find_all('a', attrs={'href': pattern})
+    all_links = target.find_all('a', attrs={'href': pattern})
     for link in all_links:
       num = re.findall('\d+', str(link))
       link['href'] = '#linkki' + str(num[0])
+
+def html_table_of_contents():
+  with open('sisallys.html') as f:
+    sivu = f.read()
+    soppa = BeautifulSoup(sivu, features="lxml")
+    div = soppa.find("div", {"id": "sisaltokentta"})
+
+    delete_unnecessary_tags(div)
+    fix_links(div)
 
   return str(div)
 
@@ -64,49 +76,11 @@ def html_page(raw):
     soppa = BeautifulSoup(sivu, features="lxml")
     div = soppa.find("div", {"id": "sisaltokentta"})
 
-    #deletions concerning page structure
-    poisto1 = div.find_all('div', {'class':'ed_seur_linkit'})
-    for poisto in poisto1: poisto.decompose()
+    delete_unnecessary_tags(div)
+    fix_links(div)
 
-    poisto2 = div.find('div', {'class':'ed_linkki'})
-    poisto3 = div.find('div', {'class':'seur_linkki'})
-    poisto4 = div.find('div', {'class':'murupolku'})
-    poisto5 = div.find('div', {'class':'ed_seur_linkit'})
-    poisto6 = div.find('div', {'class':'vaakanavigaatio_footer'})
-    poisto7 = div.find('div', {'class':'pykala_footer'})
-
-    for poisto in poisto2, poisto3, poisto4, poisto5, poisto6, poisto7:
-      try:
-        poisto.decompose()
-      except: pass
-
-    #ul tag doesn't have a proper id, so it's retrieved by randomish means
-    pattern = re.compile('.*Pykälän kirjallisuus.*')
-    all_ul = div.find_all('ul')
-
-    for ul in all_ul:
-      all_a = ul.find_all('a', text = pattern)
-      all_no_link = ul.find_all('span', text = pattern)
-
-      if all_a or all_no_link:
-        ul.decompose()
-
-    #create link targets (e.g. name=linkki243)
-    all_otsikko = div.find_all(attrs={'class': 'pykotsikko'})
-    for otsikko in all_otsikko:
-      num = re.findall("\d+", otsikko.text.strip())
-      otsikko['name'] = 'linkki' + str(num[0])
-
-    #create internal link (e.g. #linkki243)
-    pattern = re.compile('sisallys\.php\?p.*')
-    all_links = div.find_all('a', attrs={'href': pattern})
-    for link in all_links:
-      num = re.findall('\d+', str(link))
-      link['href'] = '#linkki' + str(num[0])
-
-    if raw:
-      html = str(div)
-    else: html = html_open() + str(head) + str(div) + html_close()
+    if raw: html = str(div)
+    else:   html = html_open() + str(head) + str(div) + html_close()
 
     return html
 
