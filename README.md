@@ -10,6 +10,7 @@ Install newest version of wkhtmltopdf from: https://wkhtmltopdf.org/downloads.ht
 
 ```bash
 python3 -m venv venv
+source venv/bin/activate
 python3 -m pip install -r requirements.txt
 sudo chmod +x skripti.sh
 ```
