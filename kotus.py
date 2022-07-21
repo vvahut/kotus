@@ -15,6 +15,17 @@ def delete_unnecessary_tags(target):
         poisto.decompose()
       except: pass
 
+    #ul tag doesn't have a proper id, so it's retrieved by randomish means
+    pattern = re.compile('.*Pykälän kirjallisuus.*')
+    all_ul = target.find_all('ul')
+
+    for ul in all_ul:
+      all_a = ul.find_all('a', text = pattern)
+      all_no_link = ul.find_all('span', text = pattern)
+
+      if all_a or all_no_link:
+        ul.decompose()
+
 #correct page links
 def fix_links(target):
     #create link targets (e.g. name=linkki243)
