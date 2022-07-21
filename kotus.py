@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import sys, re
 
 def html_table_of_contents():
-  with open('table.html') as f:
+  with open('sisallys.html') as f:
     sivu = f.read()
     soppa = BeautifulSoup(sivu, features="lxml")
     div = soppa.find("div", {"id": "sisallysluettelo"})
