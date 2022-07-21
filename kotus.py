@@ -8,7 +8,11 @@ def html_table_of_contents():
   with open('sisallys.html') as f:
     sivu = f.read()
     soppa = BeautifulSoup(sivu, features="lxml")
-    div = soppa.find("div", {"id": "sisallysluettelo"})
+    div = soppa.find("div", {"id": "sisaltokentta"})
+
+    #deletions concerning page structure
+    poisto1 = div.find_all('div', {'class':'ed_seur_linkit'})
+    for poisto in poisto1: poisto.decompose()
 
     #create link targets (e.g. name=linkki243)
     all_otsikko = div.find_all(attrs={'class': 'pykotsikko'})
