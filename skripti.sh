@@ -35,12 +35,13 @@ for i in {1..1738}; do
   cp output_raw.html html/$i-raw.html;
 done;
 
+wget https://kaino.kotus.fi/visk/sisallys.php?p=koko -O sisallys.html;
+
 #Merge html files
 python3 kotus.py doctype > koko.html;
 echo '<html>' >> koko.html
 python3 kotus.py header >> koko.html;
-
-cat sisallys.html >> koko.html;
+python3 kotus.py table >> koko.html;
 
 for i in {1..1738}; do
   cat html/$i-raw.html >> koko.html;
